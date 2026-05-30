@@ -1,7 +1,6 @@
 name: Build Flet APK
 on: [push]
 
-# 🟢 هنا زدت هاد الأمر ف السيستم كامل باش يسكت داك التنبيه د Node.js
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
@@ -29,9 +28,9 @@ jobs:
       - name: Build APK
         env:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_KEY }}
-        # 🟢 زدنا --verbose هنا باش يوريك الجدر د المشكل فين كاين بالظبط إيلا طاح
+        # 🟢 حيدنا الأوامر لي كتعكش وخلينا الأمر الصافي والخفيف د البناء
         run: |
-          flet build apk --project-name "NIBRAS AI" --product "Nibras AI" --build-version "1.0.0" --verbose
+          flet build apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
