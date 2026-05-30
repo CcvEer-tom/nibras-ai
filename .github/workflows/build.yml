@@ -28,9 +28,9 @@ jobs:
       - name: Build APK
         env:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_KEY }}
-        # 🟢 زدنا --no-interactive باش السيستم يوافق على تحميل Flutter SDK بوحدو بلا ما يسول
+        # 🟢 هنا استعملنا أمر yes | باش يجاوب بـ "نعام" أوتوماتيكياً على سؤال تحميل Flutter SDK
         run: |
-          flet build apk --no-interactive
+          yes | flet build apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
