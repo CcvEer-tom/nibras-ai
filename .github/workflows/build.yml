@@ -28,9 +28,9 @@ jobs:
       - name: Build APK
         env:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_KEY }}
-        # 🟢 حيدنا الأوامر لي كتعكش وخلينا الأمر الصافي والخفيف د البناء
+        # 🟢 زدنا --no-interactive باش السيستم يوافق على تحميل Flutter SDK بوحدو بلا ما يسول
         run: |
-          flet build apk
+          flet build apk --no-interactive
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
