@@ -1,20 +1,21 @@
 name: Build Flet APK
 on: [push]
 
+# 🟢 هنا زدت هاد الأمر ف السيستم كامل باش يسكت داك التنبيه د Node.js
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 🟢 تحديث لـ v4 لدعم الأنظمة الجديدة
       - uses: actions/checkout@v4
 
-      # 🟢 تحديث لـ v5 ليكون متوافق 100%
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      # 🟢 تحديث لـ v4 لتجنب أي تنبيه
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -28,10 +29,10 @@ jobs:
       - name: Build APK
         env:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_KEY }}
+        # 🟢 زدنا --verbose هنا باش يوريك الجدر د المشكل فين كاين بالظبط إيلا طاح
         run: |
-          flet build apk --project-name "NIBRAS AI" --product "Nibras AI" --build-version "1.0.0"
+          flet build apk --project-name "NIBRAS AI" --product "Nibras AI" --build-version "1.0.0" --verbose
 
-      # 🟢 هادي ديجا مأمنة ف الـ v4 ومكادير حتى مشكل
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
