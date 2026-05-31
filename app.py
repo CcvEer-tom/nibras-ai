@@ -6,7 +6,7 @@ import json
 import os
 
 # --- إعدادات الحماية: يقرأ الساروت من السيستم (GitHub Secrets) أولاً، وإيلا مالقاهش يستعمل الافتراضي ---
-NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY", "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")
+NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY", "")
 
 NVIDIA_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 MODEL_NAME = "meta/llama-3.1-8b-instruct" 
